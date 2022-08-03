@@ -1,0 +1,113 @@
+---
+title: "Summary of components"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(knitr)
+
+```
+
+```{r echo=FALSE, warning=FALSE, message=FALSE}
+sum_results <- data.frame(matrix(nrow=12,ncol=0))
+
+sum_results$Condition[1:12] <- c("Lateral Target, Valid, Exp 1","No Distractor, Valid, Exp 1","Salient Target, Valid, Exp 1","Lateral Target, Neutral, Exp 1","No Distractor, Neutral, Exp 1","Salient Target, Neutral, Exp 1","Lateral Target, Valid, Exp 2","No Distractor, Valid, Exp 2","Salient Target, Valid, Exp 2","Lateral Target, Neutral, Exp 2","No Distractor, Neutral, Exp 2","Salient Target, Neutral, Exp 2")
+
+sum_results$N2pc_prob[1:12] <- c("0.63","0.54","0.09","**<0.001**","**<0.001**","**0.01**","**0.02**","**0.02**","**0.03**","0.59","0.60","**0.01**")
+sum_results$SPCN_prob[1:12] <- c("0.72","0.96","0.77","0.31","0.44","0.92","0.14","*0.06*","**0.02**","0.39","0.70","**<0.001**")
+sum_results$RLpcN_1_prob[1:12] <- c("0.43","0.53","0.35","**0.02**","**<0.001**","0.33","*0.06*","0.29","0.29","**0.01**","0.86","**0.01**")
+sum_results$RLpcN_2_prob[1:12] <- c("0.19","0.55","0.13","**0.04**","**0.03**","0.45","**0.02**","**0.01**","**<0.001**","*0.06*","**0.01**","**<0.001**")
+
+sum_results$N2pc[1:12] <- c("X","X","X","V","V","V","V","V","V","X","X","V")
+sum_results$SPCN[1:12] <- c("X","X","X","X","X","X","X","M","V","X","X","V")
+sum_results$RLpcN_1[1:12] <- c("X","X","X","V","V","X","M","X","X","V","X","V")
+sum_results$RLpcN_2[1:12] <- c("X","X","X","V","V","X","V","V","V","M","V","V")
+
+sum_results$exp <- rep(c("1","2"),each=6)
+sum_results$cue <- rep(c("v","n"),each=3)
+sum_results$disp <- rep(c("LT","ND","ST"))
+
+sum_results_short <- sum_results[,1:5]
+knitr::kable(sum_results_short,
+             caption = "Permutation tests results. Probabilitlies lower than 5% are in **bold**. Probabilities lower than 6% are in *Italic*. Probabilities for the N2pc were taken from the supplumentary material in Rashal et al. (2022).")
+```  
+
+### Experiment 1
+
+```{r echo=FALSE}
+kable(subset(sum_results,exp=="1")[,1:5])
+```
+
+### Experiment 2
+
+```{r echo=FALSE}
+kable(subset(sum_results,exp=="2")[,1:5])
+```
+
+### Lateral Target
+
+```{r echo=FALSE}
+kable(subset(sum_results,disp=="LT")[,1:5])
+```
+
+### No Distractor
+
+```{r echo=FALSE}
+kable(subset(sum_results,disp=="LT")[,1:5])
+
+```
+
+### Salient Target
+
+```{r echo=FALSE}
+kable(subset(sum_results,disp=="LT")[,1:5])
+```
+
+### Valid Cue
+
+```{r echo=FALSE}
+kable(subset(sum_results,cue=="v")[,1:5])
+```
+
+### Neutral Cue
+
+```{r echo=FALSE}
+kable(subset(sum_results,cue=="n")[,1:5])
+```
+
+#### Lateral Target, Valid
+
+```{r echo=FALSE}
+kable(subset(sum_results,disp=="LT"&cue=="v")[,1:5])
+```
+
+#### Lateral Target, Neutral
+
+```{r echo=FALSE}
+kable(subset(sum_results,disp=="LT"&cue=="n")[,1:5])
+```
+
+#### No Distractor, Valid
+
+```{r echo=FALSE}
+kable(subset(sum_results,disp=="ND"&cue=="v")[,1:5])
+```
+
+#### No Distractor, Neutral
+
+```{r echo=FALSE}
+kable(subset(sum_results,disp=="ND"&cue=="n")[,1:5])
+```
+
+#### Salient Target, Valid
+
+```{r echo=FALSE}
+kable(subset(sum_results,disp=="ST"&cue=="v")[,1:5])
+```
+
+#### Salient Target, Neutral
+
+```{r echo=FALSE}
+kable(subset(sum_results,disp=="ST"&cue=="n")[,1:5])
+```
